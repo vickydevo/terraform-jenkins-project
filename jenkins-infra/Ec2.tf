@@ -53,7 +53,7 @@ resource "aws_instance" "jenkins" {
   instance_type               = "t3.micro"
   key_name                    = aws_key_pair.window_local_key.key_name
   vpc_security_group_ids      = [aws_security_group.jenkins_sg.id]
-  #user_data = file("miniInstall.sh")
+  #user_data = file("miniKube.sh")
 
   tags = {
     Name = "Jenkins-Server"
@@ -70,7 +70,7 @@ instance_market_options {
 
     # --- VOLUME CONFIGURATION ---
   root_block_device {
-    volume_size           = 8
+    volume_size           = 40
     volume_type           = "gp3" # Latest General Purpose SSD
     delete_on_termination = true
   }
