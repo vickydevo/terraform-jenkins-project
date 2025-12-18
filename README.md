@@ -10,15 +10,15 @@ Your folder should look like this before you push:
 │   README.md
 │
 ├── /backend-bootstrap
-│   ├── main.tf
-│   ├── outputs.tf
+│   ├── main.tf     # S3 and DynamoDB resources
+│   ├── outputs.tf  # Exports bucket/table names
 │   └── (EXCLUDED: .terraform, terraform.tfstate)
 │
-└── /jenkins-infra
-    ├── providers.tf
-    ├── Ec2.tf
+└── /jenkins-infra      # PART 2: Run this second
+    ├── providers.tf    # Contains the 'backend "s3"' block
+    ├── Ec2.tf           # Spot instance and SG logic
     ├── local_key.pub
-    ├── output.tf
+    ├── output.tf        # Jenkins IP address
     └── (EXCLUDED: .terraform, terraform.tfstate, local_key)
 
 ```
@@ -98,4 +98,3 @@ git push -u origin main
 
 Now that you have configured the **Remote Backend** (S3 and DynamoDB), your actual state data is stored in AWS. Even if you don't push the `.tfstate` file to GitHub, your work is saved in the cloud. If you move to a different computer, you just clone the code, run `terraform init`, and Terraform will download the state from S3 automatically.
 
-**Would you like me to show you how to check your GitHub repo after pushing to verify that the sensitive files were successfully ignored?**
