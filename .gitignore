@@ -1,0 +1,20 @@
+# Ignore Terraform state files (Crucial for security)
+*.tfstate
+*.tfstate.*
+
+# Ignore the local terraform directory (contains large binaries)
+.terraform/
+
+# Ignore the lock file
+.terraform.lock.hcl
+
+# Ignore private SSH keys (DO NOT PUSH THIS)
+local_key
+
+# Ignore variables that might contain secrets
+*.tfvars
+*.tfvars.json
+
+# Ignore Mac/Windows system files
+.DS_Store
+Thumbs.db
