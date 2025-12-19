@@ -50,7 +50,7 @@ resource "aws_security_group" "jenkins_sg" {
 
 resource "aws_instance" "jenkins" {
   ami                         = "ami-0ecb62995f68bb549"  # ubuntu ami  in us-east-1
-  instance_type               = "t3.micro"
+  instance_type               = "t3.2xlarge"
   key_name                    = aws_key_pair.window_local_key.key_name
   vpc_security_group_ids      = [aws_security_group.jenkins_sg.id]
   #user_data = file("miniKube.sh")
